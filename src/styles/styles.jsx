@@ -135,3 +135,9 @@ export const Footer = styled.footer`
   font-weight: 700;
   font-size: 13.2px;
 `;
+
+export const Col = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: ${(props) => props && props.margin};
+`;
