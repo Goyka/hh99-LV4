@@ -44,34 +44,32 @@ export const PostWrap = styled.div`
   border-bottom: 3px solid lightgray;
 `;
 
-export const InputId = styled.input`
+export const Input = styled.input`
   margin: 10px 0 0 0;
   width: 250px;
   height: 55px;
   border-radius: 9px;
   border: 3px solid black;
   font-size: 19px;
+`;
 
+export const InputId = styled(Input)`
   background-image: url(https://super.so/icon/dark/log-in.svg);
   background-position: 7px center;
   background-repeat: no-repeat;
+
   &:focus {
     background-image: none;
     background-position: -10px center;
     text-indent: 0;
   }
 `;
-export const InputPw = styled.input`
-  margin: 10px 0 0 0;
-  width: 250px;
-  height: 55px;
-  border-radius: 9px;
-  border: 3px solid black;
-  font-size: 19px;
 
+export const InputPw = styled(Input)`
   background-image: url(https://super.so/icon/dark/lock.svg);
   background-position: 7px center;
   background-repeat: no-repeat;
+
   &:focus {
     background-image: none;
     background-position: -10px center;
