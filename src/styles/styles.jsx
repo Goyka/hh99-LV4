@@ -21,6 +21,14 @@ export const Header = styled.header`
   margin: 10px 0 20px 0;
 `;
 
+export const Nav = styled.header`
+  display: flex;
+  justify-content: space-between;
+  width: 1280px;
+  padding: 10px;
+  border-bottom: 1px solid lightgray;
+`;
+
 export const Title = styled.h4`
   font-weight: 700;
 `;
