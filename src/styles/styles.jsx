@@ -58,6 +58,7 @@ export const Input = styled.input`
   border-radius: 9px;
   border: 3px solid black;
   font-size: 19px;
+  text-align: center;
 `;
 
 export const InputId = styled(Input)`
