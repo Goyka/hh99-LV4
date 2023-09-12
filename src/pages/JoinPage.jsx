@@ -1,11 +1,19 @@
-import { useState } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import * as St from "../styles/styles";
+import axios from "axios";
 import { validateUserId, validatePassword } from "../util/validation";
 import JoinInput from "../components/Input/JoinInput";
+import { getToken } from "../util/token";
+import * as St from "../styles/styles";
 
 export default function JoinPage() {
+  useEffect(() => {
+    const token = getToken();
+    if (token) {
+      navigate("/main");
+    }
+  }, []);
+
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
@@ -22,20 +30,28 @@ export default function JoinPage() {
         id,
         password,
       });
+
       console.log("새로운 회원가입이 발생하였습니다 ->", response);
       if (response.status === 201) {
         navigate("/");
       }
     } catch (error) {
       console.error(error);
-      alert("서버에 문제가 생겼습니다. 다시 시도해주세요.");
+      alert(error.response.data.message);
     }
   };
 
   return (
     <St.Container>
       <St.Header>
-        <img src="img/lycos.webp" alt="img" style={{ width: "250px" }} />
+        <img
+          src="img/lycos.webp"
+          alt="img"
+          style={{ width: "250px" }}
+          onClick={() => {
+            navigate("/");
+          }}
+        />
         <St.Title></St.Title>
       </St.Header>
 
