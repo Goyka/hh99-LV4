@@ -1,11 +1,18 @@
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { setToken } from "../util/token";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
+import { getToken } from "../util/token";
 import * as St from "../styles/styles";
 
 export default function LoginPage() {
+  useEffect(() => {
+    const token = getToken();
+    if (token) {
+      navigate("/main");
+    }
+  }, []);
+
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();

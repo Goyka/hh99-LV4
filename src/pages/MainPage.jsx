@@ -1,8 +1,8 @@
-import * as St from "../styles/styles";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getToken } from "../util/token";
 import { checkoutUserToken } from "../util/checkoutUserToken";
+import * as St from "../styles/styles";
 
 export default function MainPage() {
   const navigate = useNavigate();
@@ -12,11 +12,11 @@ export default function MainPage() {
     if (!token) {
       navigate("/");
     }
-  }, [navigate]);
+  }, []);
 
   const logOutHandler = async () => {
     await checkoutUserToken();
-    window.location.reload();
+    navigate("/");
   };
 
   return (

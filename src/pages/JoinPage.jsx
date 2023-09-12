@@ -1,11 +1,19 @@
-import { useState } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import * as St from "../styles/styles";
+import axios from "axios";
 import { validateUserId, validatePassword } from "../util/validation";
 import JoinInput from "../components/Input/JoinInput";
+import { getToken } from "../util/token";
+import * as St from "../styles/styles";
 
 export default function JoinPage() {
+  useEffect(() => {
+    const token = getToken();
+    if (token) {
+      navigate("/main");
+    }
+  }, []);
+
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");

@@ -1,11 +1,6 @@
 import axios from "axios";
 import { getToken } from "./token";
 
-export function isLoggedIn() {
-  const userToken = localStorage.getItem("token");
-  return !!userToken;
-}
-
 export const checkoutUserToken = async () => {
   const token = getToken();
 
