@@ -141,3 +141,10 @@ export const Col = styled.div`
   flex-direction: column;
   margin: ${(props) => props && props.margin};
 `;
+
+export const ErrorMessage = styled.div`
+  max-width: 250px;
+  color: red;
+  font-size: 12px;
+  margin: 4px;
+`;
