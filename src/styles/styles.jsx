@@ -126,6 +126,7 @@ export const Button = styled.button`
   ${({ buttontheme }) => buttontheme === "secondary" && theme.secondary};
   ${({ buttontheme }) => buttontheme === "thirdy" && theme.thirdy};
 `;
+Button.shouldForwardProp = (prop) => prop !== "buttontheme";
 
 export const Footer = styled.footer`
   padding: 21px;
