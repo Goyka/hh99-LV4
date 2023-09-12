@@ -13,7 +13,7 @@ export default function JoinPage() {
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
-    if (password !== checkPassword) {
+    if (password !== passwordConfirm) {
       alert("비밀번호와 비밀번호 확인이 서로 다릅니다.");
       return;
     }
