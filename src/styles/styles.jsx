@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
 
 export const Container = styled.div`
   margin: 0 auto;
-  padding: 21px;
+  padding: 15px;
   width: 498px;
   display: flex;
   flex-direction: column;
@@ -18,7 +18,6 @@ export const Container = styled.div`
 
 export const Header = styled.header`
   background-color: transparent;
-  margin: 10px 0 20px 0;
 `;
 
 export const Nav = styled.header`
@@ -38,7 +37,7 @@ export const Body = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100%;
-  margin: 20px 0 0 0;
+  margin: 10px 0 0 0;
 `;
 
 export const PostWrap = styled.div`

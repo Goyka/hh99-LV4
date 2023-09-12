@@ -22,20 +22,28 @@ export default function JoinPage() {
         id,
         password,
       });
+
       console.log("새로운 회원가입이 발생하였습니다 ->", response);
       if (response.status === 201) {
         navigate("/");
       }
     } catch (error) {
       console.error(error);
-      alert("서버에 문제가 생겼습니다. 다시 시도해주세요.");
+      alert(error.response.data.message);
     }
   };
 
   return (
     <St.Container>
       <St.Header>
-        <img src="img/lycos.webp" alt="img" style={{ width: "250px" }} />
+        <img
+          src="img/lycos.webp"
+          alt="img"
+          style={{ width: "250px" }}
+          onClick={() => {
+            navigate("/");
+          }}
+        />
         <St.Title></St.Title>
       </St.Header>
 

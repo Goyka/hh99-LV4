@@ -1,12 +1,28 @@
 import axios from "axios";
+import { setToken } from "../util/token";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import * as St from "../styles/styles";
 
 export default function LoginPage() {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  const checkUser = async () => {
+    try {
+      const response = await axios.get("http://3.38.191.164/user", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      console.log(response.data.message, response);
+    } catch (error) {
+      console.error(error);
+      alert(error.response.data.message);
+    }
+  };
 
   const onLoginHandler = async (e) => {
     e.preventDefault();
@@ -15,13 +31,17 @@ export default function LoginPage() {
         id,
         password,
       });
-      console.log("새로운 로그인이 요청되었습니다 ->", response);
+      console.log(response.statusText, response);
+      // console.log(response.config.data);
+
       if (response.status === 201) {
+        setToken(response.data.token);
+        checkUser();
         navigate("/main");
       }
     } catch (error) {
       console.error(error);
-      alert("서버에 문제가 생겼습니다. 다시 시도해주세요.");
+      alert(error.response.data.message);
     }
   };
 
@@ -48,7 +68,14 @@ export default function LoginPage() {
           <St.Button buttontheme="primary" onClick={onLoginHandler}>
             로그인
           </St.Button>
-          <St.Button buttontheme="secondary">회원가입</St.Button>
+          <St.Button
+            buttontheme="secondary"
+            onClick={() => {
+              navigate("/join");
+            }}
+          >
+            회원가입
+          </St.Button>
         </St.BtnWrap>
       </St.Body>
       <St.Footer>
